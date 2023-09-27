@@ -1,18 +1,8 @@
-﻿using Sistema_Escola_Forms.Entidades;
-using Sistema_Escola_Forms.Entities;
+﻿using Sistema_Escola_Forms.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema_Escola_Forms.Entities;
 using Sistema_Escola_Forms.Model;
-using Sistema_Escola_Forms.View;
-using Sistema_Escola_Forms.view;
+
 
 namespace Sistema_Escola_Forms.View
 {
@@ -27,60 +17,61 @@ namespace Sistema_Escola_Forms.View
 
         private void LoginProfessorView_Load(object sender, EventArgs e)
         {
+            ListarProf();
+        }
+
+        public void ListarProf()
+        {
+            try
+            {
+                GridProfessor.DataSource = model.listarProf();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Login(Professor professor)
         {
-            if (TxtLogin.Text == "")
+            if (CodigoProfessor.Text == "" )
             {
                 MessageBox.Show("Preencha o usuario!");
-                TxtLogin.Focus();
+                CodigoProfessor.Focus();
                 return;
             }
-            if (TxtSenha.Text == "")
-            {
-                MessageBox.Show("Preencha a senha!");
-                TxtLogin.Focus();
-                return;
-            }
+            
             try
-                {
-                  professor.Nome = TxtLogin.Text;
-                  professor.Senha = Convert.ToInt32(TxtSenha.Text);
-                    professor = model.Login(professor);
+            {
+                professor.Nome = CodigoProfessor.Text;
 
-                if (professor.Nome == null)
-                    {
+                professor = model.Login(professor);
+                MessageBox.Show("Usuario Encontrado");
 
-                    MessageBox.Show("Usuario ou senha incorretos");
-                    return;
-                    }
-                    MessageBox.Show("Usuario Encontrado");
 
-                    AdicionarNotaView form = new AdicionarNotaView();
-                    this.Hide();
-                    form.Show();
-                    }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao salvar " + ex.Message);
-                    throw;
-                }
+                AdicionarNotaView form = new AdicionarNotaView();
+                this.Hide();
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar " + ex.Message);
+                throw;
+            }
         }
         private void BtnEntrar_Click(object sender, EventArgs e)
         {
-            Entities.Professor professor = new Entities.Professor();
-            Login(professor);    
+           
         }
-        private void TxtLogin_KeyPress(object sender, KeyPressEventArgs e)
+       
+        private void GridProfessor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsSymbol(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void TxtLogin_TextChanged(object sender, EventArgs e)
-        {
-
+            CodigoProfessor.Text = GridProfessor.CurrentRow.Cells[0].Value.ToString();
+            TextNomeProfessor.Text = GridProfessor.CurrentRow.Cells[1].Value.ToString();
+            CbClasseProfessor.Text = GridProfessor.CurrentRow.Cells[2].Value.ToString();
+            TxtMateria.Text = GridProfessor.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }
+
+

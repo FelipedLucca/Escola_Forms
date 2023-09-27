@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.CbSexoAluno = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(46, 85);
+            this.label2.Location = new System.Drawing.Point(47, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 1;
@@ -71,17 +71,16 @@
             "Masculino",
             "Feminino",
             "Outro"});
-            this.CbSexoAluno.Location = new System.Drawing.Point(172, 133);
+            this.CbSexoAluno.Location = new System.Drawing.Point(173, 150);
             this.CbSexoAluno.Name = "CbSexoAluno";
             this.CbSexoAluno.Size = new System.Drawing.Size(158, 21);
             this.CbSexoAluno.TabIndex = 2;
-            
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(46, 133);
+            this.label3.Location = new System.Drawing.Point(47, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 24);
             this.label3.TabIndex = 3;
@@ -91,7 +90,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 185);
+            this.label4.Location = new System.Drawing.Point(47, 202);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 24);
             this.label4.TabIndex = 5;
@@ -99,16 +98,16 @@
             // 
             // idadeProfessor
             // 
+            this.idadeProfessor.Enabled = false;
             this.idadeProfessor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idadeProfessor.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.idadeProfessor.Location = new System.Drawing.Point(172, 185);
+            this.idadeProfessor.Location = new System.Drawing.Point(173, 202);
             this.idadeProfessor.MaxDate = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
             this.idadeProfessor.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.idadeProfessor.Name = "idadeProfessor";
             this.idadeProfessor.Size = new System.Drawing.Size(158, 24);
             this.idadeProfessor.TabIndex = 6;
             this.idadeProfessor.Value = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
-         
             // 
             // fileSystemWatcher1
             // 
@@ -117,7 +116,7 @@
             // 
             // BtnVoltarAreaProfessor
             // 
-            this.BtnVoltarAreaProfessor.Location = new System.Drawing.Point(47, 454);
+            this.BtnVoltarAreaProfessor.Location = new System.Drawing.Point(640, 454);
             this.BtnVoltarAreaProfessor.Name = "BtnVoltarAreaProfessor";
             this.BtnVoltarAreaProfessor.Size = new System.Drawing.Size(81, 41);
             this.BtnVoltarAreaProfessor.TabIndex = 8;
@@ -127,9 +126,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(224, 454);
+            this.button2.Location = new System.Drawing.Point(589, 454);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 41);
+            this.button2.Size = new System.Drawing.Size(132, 41);
             this.button2.TabIndex = 9;
             this.button2.Text = "CRIAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -139,11 +138,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(419, 87);
+            this.label6.Location = new System.Drawing.Point(420, 104);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 24);
+            this.label6.Size = new System.Drawing.Size(66, 24);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Turma";
+            this.label6.Text = "Classe";
             // 
             // CbturmaAluno
             // 
@@ -157,50 +156,48 @@
             "2A",
             "2B",
             "2C"});
-            this.CbturmaAluno.Location = new System.Drawing.Point(545, 87);
+            this.CbturmaAluno.Location = new System.Drawing.Point(546, 104);
             this.CbturmaAluno.Name = "CbturmaAluno";
             this.CbturmaAluno.Size = new System.Drawing.Size(175, 21);
             this.CbturmaAluno.TabIndex = 13;
-     
             // 
             // TextNomeAluno
             // 
             this.TextNomeAluno.Enabled = false;
-            this.TextNomeAluno.Location = new System.Drawing.Point(172, 88);
+            this.TextNomeAluno.Location = new System.Drawing.Point(173, 105);
             this.TextNomeAluno.Name = "TextNomeAluno";
             this.TextNomeAluno.Size = new System.Drawing.Size(158, 20);
             this.TextNomeAluno.TabIndex = 16;
-            
             this.TextNomeAluno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextNomeAluno_KeyPress);
             // 
             // RaAluno
             // 
             this.RaAluno.Enabled = false;
-            this.RaAluno.Location = new System.Drawing.Point(545, 133);
+            this.RaAluno.Location = new System.Drawing.Point(546, 150);
             this.RaAluno.Name = "RaAluno";
             this.RaAluno.ReadOnly = true;
             this.RaAluno.Size = new System.Drawing.Size(175, 20);
             this.RaAluno.TabIndex = 17;
-         
             // 
             // BtnNovo
             // 
-            this.BtnNovo.Location = new System.Drawing.Point(137, 454);
+            this.BtnNovo.Location = new System.Drawing.Point(401, 454);
             this.BtnNovo.Name = "BtnNovo";
-            this.BtnNovo.Size = new System.Drawing.Size(81, 41);
+            this.BtnNovo.Size = new System.Drawing.Size(132, 41);
             this.BtnNovo.TabIndex = 19;
             this.BtnNovo.Text = "NOVO";
             this.BtnNovo.UseVisualStyleBackColor = true;
-         
+            this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click_1);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(311, 454);
+            this.button1.Location = new System.Drawing.Point(220, 454);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 41);
+            this.button1.Size = new System.Drawing.Size(132, 41);
             this.button1.TabIndex = 20;
             this.button1.Text = "EDITAR";
             this.button1.UseVisualStyleBackColor = true;
-           
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -214,9 +211,9 @@
             // 
             // BtnExcluirAluno
             // 
-            this.BtnExcluirAluno.Location = new System.Drawing.Point(398, 454);
+            this.BtnExcluirAluno.Location = new System.Drawing.Point(50, 454);
             this.BtnExcluirAluno.Name = "BtnExcluirAluno";
-            this.BtnExcluirAluno.Size = new System.Drawing.Size(86, 41);
+            this.BtnExcluirAluno.Size = new System.Drawing.Size(126, 41);
             this.BtnExcluirAluno.TabIndex = 22;
             this.BtnExcluirAluno.Text = "EXCLUIR";
             this.BtnExcluirAluno.UseVisualStyleBackColor = true;
@@ -226,7 +223,7 @@
             // 
             this.RA.AutoSize = true;
             this.RA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RA.Location = new System.Drawing.Point(422, 133);
+            this.RA.Location = new System.Drawing.Point(423, 150);
             this.RA.Name = "RA";
             this.RA.Size = new System.Drawing.Size(36, 24);
             this.RA.TabIndex = 23;
@@ -242,18 +239,17 @@
             this.Grid.Location = new System.Drawing.Point(50, 257);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.Grid.Size = new System.Drawing.Size(715, 166);
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.Grid.Size = new System.Drawing.Size(671, 166);
             this.Grid.TabIndex = 7;
             this.Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick_1);
-       
             // 
             // label5
             // 
@@ -269,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 516);
+            this.ClientSize = new System.Drawing.Size(801, 516);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.RA);

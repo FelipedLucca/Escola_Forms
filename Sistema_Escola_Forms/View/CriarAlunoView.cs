@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 using Sistema_Escola_Forms.Model;
+using System.Collections.Generic;
 
 namespace Sistema_Escola_Forms.view
 {
@@ -53,7 +54,7 @@ namespace Sistema_Escola_Forms.view
                 throw;
             }
         }
-        private void Editar(Aluno aluno)
+        public void Editar(Aluno aluno)
         {
             try
             {
@@ -72,7 +73,7 @@ namespace Sistema_Escola_Forms.view
                 throw;
             }
         }
-        private void Excluir(Aluno aluno)
+        public void Excluir(Aluno aluno)
         {
             try
             {
@@ -90,15 +91,15 @@ namespace Sistema_Escola_Forms.view
         #endregion
 
         #region buttons
-        private void BtnVoltarAreaProfessor_Click(object sender, EventArgs e)
+        public void BtnVoltarAreaProfessor_Click(object sender, EventArgs e)
         {
             Close();
-            Thread t = new Thread(() => Application.Run(new AreaProfessorView()));
+            Thread t = new Thread(() => Application.Run(new AreaAdmView()));
             t.Start();
         }
-        private void BtnCriar_Click(object sender, EventArgs e)
+        public void BtnCriar_Click(object sender, EventArgs e)
         {
-            HabilitarCampo();
+           
 
             if (TextNomeAluno.Text == "")
             {
@@ -131,20 +132,20 @@ namespace Sistema_Escola_Forms.view
         //    Random random = new Random();
         //    int ra = random.Next(1000, 9000);
 
-        //    // aqui eu preciso fazer uma verificação se um RA já existe
+        //    //aqui eu preciso fazer uma verificação se um RA já existe
 
         //    RaAluno.Text = Convert.ToString(ra);
         //}
-        //private void btnEditar_Click(object sender, EventArgs e)
-        //{
-        //    if (MessageBox.Show("Você deseja editar o aluno?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        //    {
-        //        HabilitarCampo();
-        //        Aluno aluno = new Aluno();
-        //        Editar(aluno);
-        //        Listar();
-        //    };
-        //}
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Você deseja editar o aluno?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                HabilitarCampo();
+                Aluno aluno = new Aluno();
+                Editar(aluno);
+                Listar();
+            };
+        }
         private void BtnExcluirAluno_Click(object sender, EventArgs e)
         {
             if (RaAluno.Text == "")
@@ -167,7 +168,7 @@ namespace Sistema_Escola_Forms.view
         {
             TextNomeAluno.Enabled = true;
             CbSexoAluno.Enabled = true;
-
+            idadeProfessor.Enabled = true;
             CbturmaAluno.Enabled = true;
             RaAluno.Enabled = true;
             idadeProfessor.Enabled = true;
@@ -176,7 +177,7 @@ namespace Sistema_Escola_Forms.view
         {
             TextNomeAluno.Enabled = false;
             CbSexoAluno.Enabled = false;
-
+            idadeProfessor.Enabled = false;
             CbturmaAluno.Enabled = false;
             RaAluno.Enabled = false;
             idadeProfessor.Enabled = false;
@@ -185,7 +186,7 @@ namespace Sistema_Escola_Forms.view
         {
             TextNomeAluno.Text = "";
             CbSexoAluno.Text = "";
-
+            idadeProfessor.Text = "";
             CbturmaAluno.Text = "";
             RaAluno.Text = "";
             idadeProfessor.Text = "";
@@ -206,5 +207,37 @@ namespace Sistema_Escola_Forms.view
             CbturmaAluno.Text = Grid.CurrentRow.Cells[3].Value.ToString();
             RaAluno.Text = Grid.CurrentRow.Cells[4].Value.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (RaAluno.Text == "")
+            {
+                MessageBox.Show("Selecione na tabela um registro para Editar!");
+                return;
+            }
+            if (MessageBox.Show("Você deseja excluir editar o aluno?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Aluno aluno = new Aluno();
+                Editar(aluno);
+                Listar();
+            };
+        }
+
+        private void BtnNovo_Click_1(object sender, EventArgs e)
+        {
+            HabilitarCampo();
+            LimparCampo();
+
+            Random random = new Random();
+            int ra = random.Next(1000, 9000);
+            RaAluno.Text = Convert.ToString(ra);  
+        }
     }
 }
+
+
+
+
+
+
+

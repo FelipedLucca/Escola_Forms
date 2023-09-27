@@ -1,12 +1,7 @@
-﻿using Sistema_Escola_Forms.Entidades;
-using Sistema_Escola_Forms.Entities;
+﻿using Sistema_Escola_Forms.Entities;
 using Sistema_Escola_Forms.Repository;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_Escola_Forms.Model
@@ -26,6 +21,35 @@ namespace Sistema_Escola_Forms.Model
                 throw;
             }
         }
+        public DataTable Buscar(string professor_classe)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.Buscar(professor_classe);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public DataTable NotaAluno()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.NotaAluno();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao fazer o innner");
+                throw;
+            }
+        }
         public DataTable ListarNota()
         {
             try
@@ -39,5 +63,6 @@ namespace Sistema_Escola_Forms.Model
                 throw;
             }
         }
-    }
-}
+      }
+ }
+

@@ -8,9 +8,11 @@ using Sistema_Escola_Forms.Validation;
 
 namespace Sistema_Escola_Forms.View
 {
+
     public partial class AdicionarNotaView : Form
     {
-        NotaModel model = new NotaModel();
+        ProfessorModel modelProf = new ProfessorModel();
+        NotaModel modelNota = new NotaModel();
         Metodo metodo = new Metodo();
 
         public AdicionarNotaView()
@@ -20,14 +22,34 @@ namespace Sistema_Escola_Forms.View
 
         private void Boletim_Load(object sender, EventArgs e)
         {
-            ListarNota();
+            NotaAluno();
+            
+            CbBuscarProf.ValueMember = "classe";
+            CbBuscarProf.DisplayMember = "nome";
+            CbBuscarProf.DataSource = modelProf.listarProf();
+
+            // deixando o Data source por ultimo ele ja vai saber o que procurar (listar professor).
+            //o programa vai procurar pelo ValueMember 
         }
 
+        public void NotaAluno()
+        {
+            try
+            {
+
+                GridNotas.AutoGenerateColumns = false;
+                GridNotas.DataSource = modelNota.NotaAluno();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void ListarNota()
         {
             try
             {
-                GridNotas.DataSource = model.ListarNota();
+                GridNotas.DataSource = modelNota.ListarNota();
             }
             catch (Exception)
             {
@@ -35,23 +57,19 @@ namespace Sistema_Escola_Forms.View
             }
         }
 
-
-        public void Validacao(double n1, double n2, double n3, double n4)
-        {
-           metodo.ValidacaoNotas(n1, n2, n3, n4);
-        }
         public void SalvarNota(Nota nota)
         {
             try
             {
+                // colocar um try parse aqui 
+
                 nota.Nota1 = Convert.ToDouble(txtNota01.Text);
                 nota.Nota2 = Convert.ToDouble(txtNota02.Text);
                 nota.Nota3 = Convert.ToDouble(txtNota03.Text);
                 nota.Nota4 = Convert.ToDouble(txtNota04.Text);
-             
                 nota.media = Convert.ToDouble(labelMedia.Text);
 
-                model.SalvarNota(nota);
+                modelNota.SalvarNota(nota);
                 MessageBox.Show("Notas salvas com sucesso!");
             }
             catch (Exception ex)
@@ -64,18 +82,18 @@ namespace Sistema_Escola_Forms.View
         {
             try
             {
-                GridNotas.DataSource = model.ListarNota();
+                GridNotas.DataSource = modelNota.ListarNota();
             }
             catch (Exception)
             {
                 throw;
             }
         }
-       
+
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
             Close();
-            Thread t = new Thread(() => Application.Run(new AreaProfessorView()));
+            Thread t = new Thread(() => Application.Run(new AreaAdmView()));
             t.Start();
         }
 
@@ -101,26 +119,40 @@ namespace Sistema_Escola_Forms.View
             double n3 = Convert.ToDouble(txtNota03.Text);
             double n4 = Convert.ToDouble(txtNota04.Text);
 
-            Validacao(n1, n2, n3, n4);
+            double media;
 
-            double media, valor, soma;
-            soma = 0;
-
-            foreach (Control controle in this.Controls)
+            if (n1 < 0 || n1 > 10)
             {
-                if (controle is TextBox)
-                {
-                    valor = Convert.ToDouble(((TextBox)controle).Text);
-                    soma += valor;
-                }
-
-                media = soma / 4;
-                this.Controls["labelMedia"].Text = media.ToString();
+                labelNota22.Text = "A nota 01 precisa estar entre 0 e 10!";
+                return;
+            }
+            if (n2 < 0 || n2 > 10)
+            {
+                labelNota33.Text = "A nota 02 precisa estar entre 0 e 10! ";
+                return;
+            }
+            if (n3 < 0 || n3 > 10)
+            {
+                //label44.Text = "A nota 03 precisa estar entre 0 e 10! ";
+                return;
+            }
+            if (n4 < 0 || n4 > 10)
+            {
+                label55.Text = "A nota 04 precisa estar entre 0 e 10! ";
+                return;
+            }
+            else
+            {
+                media = (n1 + n2 + n3 + n4) / 4;
+                labelMedia.Text = media.ToString();
             }
         }
+
         private void txtNota01_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            metodo.NotasDecimais(sender, e);    
+            if (char.IsLetter(e.KeyChar) && e.KeyChar != 44 && e.KeyChar != 8)
+                e.Handled = true;
+            //indica se o evento foi tratado
         }
 
         #region Campos
@@ -149,7 +181,85 @@ namespace Sistema_Escola_Forms.View
             txtNota04.Text = "";
         }
         #endregion
-    
-    }
+
+        private void BtnEntrar_Click(object sender, EventArgs e)
+        {
+            Professor professor = new Professor();
+            //Login(professor);
+        }
+
+        private void CbBuscarProf_TextChanged(object sender, EventArgs e)
+        {
+
+            string professor_classe = CbBuscarProf.SelectedValue.ToString();
+
+            GridNotas.AutoGenerateColumns = false;
+            GridNotas.DataSource = modelNota.Buscar(professor_classe);
+            textBoxCodigo.Text = GridNotas.CurrentRow.Cells[7].Value.ToString(); 
+            TxtMateria.Text = GridNotas.CurrentRow.Cells[8].Value.ToString();
+        }
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public void Login(Professor professor)
+        //{
+        //    if (TxtLogin.Text == "")
+        //    {
+        //        MessageBox.Show("Preencha o usuario!");
+        //        TxtLogin.Focus();
+        //        return;
+        //    }
+
+        //    try
+        //    {
+        //        professor.Nome = TxtLogin.Text;
+        //        professor = modelProf.Login(professor);
+
+        //        if (professor.Nome == null)
+        //        {
+
+        //            MessageBox.Show("Usuario ou senha incorretos");
+        //            return;
+        //        }
+        //        MessageBox.Show("Usuario Encontrado");
+
+        //        AdicionarNotaView form = new AdicionarNotaView();
+        //        this.Hide();
+        //        form.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Erro ao salvar " + ex.Message);
+        //        throw;
+        //    }
+        //}
+    }   
 }
 

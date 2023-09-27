@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema_Escola_Forms.Entidades;
 using Sistema_Escola_Forms.Entities;
 using Sistema_Escola_Forms.Model;
 using Sistema_Escola_Forms.view;
@@ -25,7 +17,7 @@ namespace Sistema_Escola_Forms.View
         }
         private void CriarProfessor_Load(object sender, EventArgs e)
         {
-            Listar();
+            ListarProf();
         }
 
         private void BtnNovoProfessor_Click(object sender, EventArgs e)
@@ -36,9 +28,7 @@ namespace Sistema_Escola_Forms.View
             Random random = new Random();
             int id = random.Next(1000, 9000);
 
-            // aqui eu preciso fazer uma verificação se um RA já existe
-
-            IdProfessor.Text = Convert.ToString(id);
+            CodigoProfessor.Text = Convert.ToString(id);
         }
 
         private void BtnProfessor_Click(object sender, EventArgs e)
@@ -48,49 +38,53 @@ namespace Sistema_Escola_Forms.View
                 HabilitarCampo();
                 Professor professor = new Professor();
                 Editar(professor);
-                Listar();
+                ListarProf();
             };
         }
 
         private void BtnCriarProfessor_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            if (TextNomeProfessor.Text == "")
-            {
-                MessageBox.Show("O professor novo precisa ter um NOME!");
-                return;
-            }
-            else if (CbSexoProfessor.Text == "")
-            {
-                MessageBox.Show("O professor novo precisa ter um SEXO!");
-                return;
-            }
-            else if (CbturmaProfessor.Text == "")
-            {
-                MessageBox.Show("O professor novo precisa ter um TURMA!");
-                return;
-            }
-            else if (string.IsNullOrEmpty(TxtSenha.Text))
-            {
-                MessageBox.Show("O professor novo precisa de uma senha!");
-                return;
-            }
+                if (TextNomeProfessor.Text == "")
+                {
+                    MessageBox.Show("O professor novo precisa ter um NOME!");
+                    return;
+                }
+                else if (CbSexoProfessor.Text == "")
+                {
+                    MessageBox.Show("O professor novo precisa ter um SEXO!");
+                    return;
+                }
+                else if (CbClasseProfessor.Text == "")
+                {
+                    MessageBox.Show("O professor novo precisa ter um TURMA!");
+                    return;
+                }
 
-            if (MessageBox.Show("Você deseja criar um professor?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Você deseja criar um professor?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Professor professor = new Professor();
+                    Salvar(professor);
+                    ListarProf();
+                };
+            }
+            catch (Exception ex)
             {
-                Professor professor = new Professor();
-                Salvar(professor);
-                Listar();
-            };
+                MessageBox.Show("Erro ao editar professor : "+ex.Message);
+                
+            }
+  
         }
 
         #region Crud
 
-        public void Listar()
+        public void ListarProf()
         {
             try
             {
-                Grid.DataSource = model.listar();
+                GridProfessor.DataSource = model.listarProf();
             }
             catch (Exception)
             {
@@ -102,12 +96,12 @@ namespace Sistema_Escola_Forms.View
         {
             try
             {
-                professor.Id = Convert.ToInt16(IdProfessor.Text);
+                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
                 professor.Nome = TextNomeProfessor.Text;
                 professor.Sexo = CbSexoProfessor.Text;
                 professor.Idade = Convert.ToDateTime(idadeProfessor.Text);
                 professor.Materia = TxtMateria.Text;
-                professor.Sala = CbturmaProfessor.Text;
+                professor.Classe = CbClasseProfessor.Text;
 
                 model.Editar(professor);
                 MessageBox.Show("Professor editado com sucesso!");
@@ -126,10 +120,10 @@ namespace Sistema_Escola_Forms.View
                 professor.Nome = TextNomeProfessor.Text;
                 professor.Sexo = CbSexoProfessor.Text;
                 professor.Idade = Convert.ToDateTime(idadeProfessor.Text);
-                professor.Sala = CbturmaProfessor.Text;
+                professor.Classe = CbClasseProfessor.Text;
                 professor.Materia = TxtMateria.Text;
-                professor.Id = Convert.ToInt16(IdProfessor.Text);
-                professor.Senha = Convert.ToInt32(TxtSenha.Text);
+                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
+            
 
                 model.Salvar(professor);
                 MessageBox.Show("Salvo com sucesso!");
@@ -145,7 +139,7 @@ namespace Sistema_Escola_Forms.View
         {
             try
             {
-                professor.Id = Convert.ToInt16(IdProfessor.Text);
+                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
 
                 model.Excluir(professor);
                 MessageBox.Show("Professor excluido com sucesso!");
@@ -179,43 +173,43 @@ namespace Sistema_Escola_Forms.View
             TextNomeProfessor.Enabled = true;
             CbSexoProfessor.Enabled = true;
             TxtMateria.Enabled = true;
-            CbturmaProfessor.Enabled = true;
-            IdProfessor.Enabled = true;
+            CbClasseProfessor.Enabled = true;
+            CodigoProfessor.Enabled = true;
             idadeProfessor.Enabled = true;
-            TxtSenha.Enabled = true;
+          
         }
         public void DesabilitarCampo()
         {
             TextNomeProfessor.Enabled = false;
             CbSexoProfessor.Enabled = false;
             TxtMateria.Enabled = false;
-            CbturmaProfessor.Enabled = false;
-            IdProfessor.Enabled = false;
+            CbClasseProfessor.Enabled = false;
+            CodigoProfessor.Enabled = false;
             idadeProfessor.Enabled = false;
-            TxtSenha.Enabled = false;
+          
         }
         public void LimparCampo()
         {
             TextNomeProfessor.Text = "";
             CbSexoProfessor.Text = "";
             TxtMateria.Text = "";
-            CbturmaProfessor.Text = "";
-            IdProfessor.Text = "";
+            CbClasseProfessor.Text = "";
+            CodigoProfessor.Text = "";
             idadeProfessor.Text = "";
-            TxtSenha.Text = "";
+           
         }
         #endregion
 
         private void BtnVoltarAreaProfessor_Click(object sender, EventArgs e)
         {
             Close();
-            Thread t = new Thread(() => Application.Run(new AreaProfessorView()));
+            Thread t = new Thread(() => Application.Run(new AreaAdmView()));
             t.Start();
         }
 
         private void BtnExcluirProfessor_Click(object sender, EventArgs e)
         {
-                if (TextNomeProfessor.Text == "" || IdProfessor.Text == "" )
+                if (TextNomeProfessor.Text == "" || CodigoProfessor.Text == "" )
                 {
                     MessageBox.Show("Selecione na tabela um registro para excluir!");
                     return;
@@ -224,8 +218,17 @@ namespace Sistema_Escola_Forms.View
                 {
                     Professor professor = new Professor();
                     Excluir(professor);
-                    Listar();
+                    ListarProf();
                 };
+        }
+        private void GridProfessor_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CodigoProfessor.Text = GridProfessor.CurrentRow.Cells[0].Value.ToString();
+            TextNomeProfessor.Text = GridProfessor.CurrentRow.Cells[1].Value.ToString();
+            idadeProfessor.Text = GridProfessor.CurrentRow.Cells[2].Value.ToString();
+            CbSexoProfessor.Text = GridProfessor.CurrentRow.Cells[3].Value.ToString(); 
+            CbClasseProfessor.Text = GridProfessor.CurrentRow.Cells[4].Value.ToString(); 
+            TxtMateria.Text = GridProfessor.CurrentRow.Cells[5].Value.ToString();
         }
     }
 

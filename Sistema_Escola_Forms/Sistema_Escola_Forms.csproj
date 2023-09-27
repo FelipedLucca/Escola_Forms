@@ -111,11 +111,11 @@
     <Compile Include="Repository\NotaRepository.cs" />
     <Compile Include="Repository\ProfessorRepository.cs" />
     <Compile Include="Validation\Metodo.cs" />
-    <Compile Include="View\AreaProfessorView.cs">
+    <Compile Include="View\AreaAdmView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AreaProfessorView.Designer.cs">
-      <DependentUpon>AreaProfessorView.cs</DependentUpon>
+    <Compile Include="View\AreaAdmView.Designer.cs">
+      <DependentUpon>AreaAdmView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CriarAlunoView.cs">
       <SubType>Form</SubType>
@@ -151,8 +151,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\AreaProfessorView.resx">
-      <DependentUpon>AreaProfessorView.cs</DependentUpon>
+    <EmbeddedResource Include="View\AreaAdmView.resx">
+      <DependentUpon>AreaAdmView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdicionarNotaView.resx">
       <DependentUpon>AdicionarNotaView.cs</DependentUpon>

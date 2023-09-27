@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Sistema_Escola_Forms.view
 {
-    public partial class AreaProfessorView : Form
+    public partial class AreaAdmView : Form
     {
-        public AreaProfessorView()
+        public AreaAdmView()
         {
             InitializeComponent();
         }

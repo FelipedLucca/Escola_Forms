@@ -18,7 +18,7 @@ namespace Sistema_Escola_Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AreaProfessorView());
+            Application.Run(new AreaAdmView());
         }
     }
 }

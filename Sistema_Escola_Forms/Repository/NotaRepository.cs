@@ -1,17 +1,8 @@
-﻿                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using MySqlX.XDevAPI;
-using Sistema_Escola_Forms.Entidades;
 using System.Data;
 using Sistema_Escola_Forms.Entities;
-using Sistema_Escola_Forms.Model;
-
 namespace Sistema_Escola_Forms.Repository
 {
     internal class NotaRepository
@@ -19,7 +10,26 @@ namespace Sistema_Escola_Forms.Repository
         MySqlCommand sql;
         Connection con = new Connection();
 
-         public DataTable ListarNota()
+        public DataTable NotaAluno()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT a.ra, a.nome, a.sala FROM alunos a INNER JOIN professor p ON a.sala = p.classe; ", con.conectar);
+                MySqlDataAdapter da = new MySqlDataAdapter(sql);
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("erro : " + ex.Message);
+                throw ex;
+            }
+        }
+
+        public DataTable ListarNota()
         {
             try
             {
@@ -37,6 +47,27 @@ namespace Sistema_Escola_Forms.Repository
                 throw ex;
             }
         }
+
+        public DataTable Buscar(string professor_classe)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand( "SELECT A.nome, A.ra, A.sala, P.codigo, P.materia FROM alunos A INNER JOIN professor P on A.sala = P.classe WHERE P.classe = @professor_classe", con.conectar);
+                MySqlDataAdapter da = new MySqlDataAdapter(sql);
+                da.SelectCommand = sql;
+                sql.Parameters.AddWithValue("@professor_classe", professor_classe);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("erro : " + ex.Message);
+                throw ex;
+            }
+        }
+
         public void SalvarNota(Nota nota)
         {
             try
@@ -52,12 +83,14 @@ namespace Sistema_Escola_Forms.Repository
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erro ao salvar" + ex.Message);
+               
                 con.FecharConexao();
-                throw ex;
+                throw ;
             }
         }
-    }
+    }   
 }
+
+

@@ -1,12 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using Sistema_Escola_Forms.Entidades;
 using Sistema_Escola_Forms.Entities;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_Escola_Forms.Repository
@@ -20,9 +15,8 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT*FROM professor WHERE nome = @nome AND senha = @senha ", con.conectar);
+                sql = new MySqlCommand("SELECT*FROM professor WHERE nome = @nome  ", con.conectar);
                 sql.Parameters.AddWithValue("@nome", professor.Nome);
-                sql.Parameters.AddWithValue("@senha", professor.Senha);
                 MySqlDataReader dr;
                 dr = sql.ExecuteReader();
                 if (dr.HasRows)
@@ -30,7 +24,6 @@ namespace Sistema_Escola_Forms.Repository
                     while (dr.Read())
                     {
                         professor.Nome = Convert.ToString(dr["nome"]);
-                        professor.Senha = Convert.ToInt32(dr["senha"]);
                     }
                 }
                 else
@@ -69,13 +62,13 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO professor(nome,sexo, idade, id, materia, senha) VALUES(@nome ,@sexo, @idade , @id ,@materia, @senha ) ", con.conectar);
+                sql = new MySqlCommand("INSERT INTO professor(nome,sexo, idade, codigo, materia, classe) VALUES(@nome ,@sexo, @idade , @codigo ,@materia, @classe ) ", con.conectar);
                 sql.Parameters.AddWithValue("@nome", professor.Nome);
                 sql.Parameters.AddWithValue("@sexo", professor.Sexo);
                 sql.Parameters.AddWithValue("@idade", professor.Idade);
-                sql.Parameters.AddWithValue("@id", professor.Id);
+                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
                 sql.Parameters.AddWithValue("@materia", professor.Materia);
-                sql.Parameters.AddWithValue("@senha", professor.Senha);
+                sql.Parameters.AddWithValue("@classe", professor.Classe);
 
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
@@ -92,17 +85,16 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE alunos SET nome = @nome, sexo = @sexo, idade = @idade, sala = @sala WHERE ra = @ra", con.conectar);
+                sql = new MySqlCommand("UPDATE alunos SET nome = @nome, sexo = @sexo, idade = @idade, classe = @classe WHERE codigo = @codigo", con.conectar);
                 sql.Parameters.AddWithValue("@nome", professor.Nome);
                 sql.Parameters.AddWithValue("@sexo", professor.Sexo);
                 sql.Parameters.AddWithValue("@idade", professor.Idade);
                 sql.Parameters.AddWithValue("@materia", professor.Materia);
-                sql.Parameters.AddWithValue("@senha", professor.Senha);
-
+                sql.Parameters.AddWithValue("@classe", professor.Classe);
+                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
 
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
-                //executar os comandos de sql
             }
             catch (Exception ex)
             {
@@ -117,9 +109,9 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM professor WHERE id = @Id", con.conectar);
+                sql = new MySqlCommand("DELETE FROM professor WHERE codigo = @codigo", con.conectar);
 
-                sql.Parameters.AddWithValue("@id", professor.Id);
+                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
 
                 sql.ExecuteNonQuery();
                 con.FecharConexao();

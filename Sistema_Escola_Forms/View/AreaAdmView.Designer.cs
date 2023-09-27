@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Escola_Forms.view
 {
-    partial class AreaProfessorView
+    partial class AreaAdmView
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             // BtnCriarAluno
             // 
             this.BtnCriarAluno.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCriarAluno.Location = new System.Drawing.Point(198, 183);
+            this.BtnCriarAluno.Location = new System.Drawing.Point(113, 169);
             this.BtnCriarAluno.Name = "BtnCriarAluno";
             this.BtnCriarAluno.Size = new System.Drawing.Size(161, 84);
             this.BtnCriarAluno.TabIndex = 0;
@@ -49,18 +49,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(257, 96);
+            this.label1.Location = new System.Drawing.Point(114, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 84);
+            this.label1.Size = new System.Drawing.Size(327, 42);
             this.label1.TabIndex = 3;
-            this.label1.Text = "PROFESSORES\r\n\r\n";
+            this.label1.Text = "ADMINISTRAÇÃO";
             // 
             // BtnBoletim
             // 
             this.BtnBoletim.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBoletim.Location = new System.Drawing.Point(421, 182);
+            this.BtnBoletim.Location = new System.Drawing.Point(113, 259);
             this.BtnBoletim.Name = "BtnBoletim";
-            this.BtnBoletim.Size = new System.Drawing.Size(167, 84);
+            this.BtnBoletim.Size = new System.Drawing.Size(161, 84);
             this.BtnBoletim.TabIndex = 4;
             this.BtnBoletim.Text = "BOLETIM";
             this.BtnBoletim.UseVisualStyleBackColor = true;
@@ -68,25 +68,25 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(308, 296);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(280, 259);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 84);
+            this.button1.Size = new System.Drawing.Size(161, 84);
             this.button1.TabIndex = 7;
             this.button1.Text = "Professores";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // AreaProfessorView
+            // AreaAdmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 516);
+            this.ClientSize = new System.Drawing.Size(552, 434);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnBoletim);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnCriarAluno);
-            this.Name = "AreaProfessorView";
+            this.Name = "AreaAdmView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Area_Professor";
             this.ResumeLayout(false);

@@ -1,13 +1,7 @@
-﻿using Sistema_Escola_Forms.Entidades;
-using Sistema_Escola_Forms.Repository;
+﻿using Sistema_Escola_Forms.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_Escola_Forms.Entities;
-using Sistema_Escola_Forms.Repository;
 using System.Data;
 
 namespace Sistema_Escola_Forms.Model
@@ -15,7 +9,7 @@ namespace Sistema_Escola_Forms.Model
     public class ProfessorModel
     {
         ProfessorRepository dao = new ProfessorRepository();
-        public Entities.Professor Login(Entities.Professor professor)
+        public Professor Login(Professor professor)
         {
             try
             {
@@ -27,7 +21,7 @@ namespace Sistema_Escola_Forms.Model
                 throw;
             }
         }
-        public DataTable listar()
+        public DataTable listarProf()
         {
             try
             {

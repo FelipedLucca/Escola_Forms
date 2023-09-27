@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using MySqlX.XDevAPI;
 using Sistema_Escola_Forms.Entidades;
 
 namespace Sistema_Escola_Forms.Repository
