@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace Sistema_Escola_Forms.Model
 {
-    internal class NotaModel
+    internal class BoletimModel
     {
-        NotaRepository dao = new NotaRepository();
-        public void SalvarNota(Nota nota)
+        BoletimRepository dao = new BoletimRepository();
+        public void SalvarNota(Boletim boletim)
         {
             try
             {
-                dao.SalvarNota(nota);                                                                                           
+                dao.SalvarNota(boletim);
             }
             catch (Exception ex)
             {
@@ -21,21 +21,6 @@ namespace Sistema_Escola_Forms.Model
                 throw;
             }
         }
-        public DataTable Buscar(string professor_classe)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.Buscar(professor_classe);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
         public DataTable NotaAluno()
         {
             try
@@ -44,9 +29,8 @@ namespace Sistema_Escola_Forms.Model
                 dt = dao.NotaAluno();
                 return dt;
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao fazer o innner");
                 throw;
             }
         }
@@ -63,6 +47,7 @@ namespace Sistema_Escola_Forms.Model
                 throw;
             }
         }
-      }
- }
+    }
+}
+
 

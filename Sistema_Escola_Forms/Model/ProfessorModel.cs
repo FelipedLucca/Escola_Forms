@@ -15,9 +15,8 @@ namespace Sistema_Escola_Forms.Model
             {
                 return dao.Enter(professor);
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao salvar");
                 throw;
             }
         }
@@ -29,7 +28,7 @@ namespace Sistema_Escola_Forms.Model
                 dt = dao.ListarProf();
                 return dt;
             }                                                                           
-            catch (Exception)
+            catch 
             {
                 throw;
             }
@@ -40,9 +39,8 @@ namespace Sistema_Escola_Forms.Model
                 {
                     dao.Salvar(professor);
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    MessageBox.Show("Erro ao salvar");
                     throw;
                 }
             }
@@ -52,9 +50,8 @@ namespace Sistema_Escola_Forms.Model
                 {
                     dao.EditarProf(professor);
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    MessageBox.Show("Erro ao editar!");
                     throw;
                 }
             }
@@ -64,20 +61,10 @@ namespace Sistema_Escola_Forms.Model
                 {
                     dao.ExcluirProf(professor);
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    MessageBox.Show("Erro ao editar!");
                     throw;
                 }
             }
-
-
-
-
-        
-
-
-
-
     }
 }

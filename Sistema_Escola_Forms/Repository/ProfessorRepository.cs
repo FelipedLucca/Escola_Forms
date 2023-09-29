@@ -2,7 +2,6 @@
 using Sistema_Escola_Forms.Entities;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace Sistema_Escola_Forms.Repository
 {
@@ -33,10 +32,9 @@ namespace Sistema_Escola_Forms.Repository
 
                 return professor;
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("erro : " + ex.Message);
-                throw ex;
+                throw;
             }
         }
         public DataTable ListarProf()
@@ -51,10 +49,9 @@ namespace Sistema_Escola_Forms.Repository
                 da.Fill(dt);
                 return dt;
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("erro : " + ex.Message);
-                throw ex;
+                throw;
             }
         }
         public void Salvar(Professor professor)
@@ -62,67 +59,69 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO professor(nome,sexo, idade, codigo, materia, classe) VALUES(@nome ,@sexo, @idade , @codigo ,@materia, @classe ) ", con.conectar);
+                sql = new MySqlCommand("INSERT INTO professor(nome,sexo, idade, id, materia, classe) VALUES(@nome ,@sexo, @idade , @id ,@materia, @classe ) ", con.conectar);
                 sql.Parameters.AddWithValue("@nome", professor.Nome);
                 sql.Parameters.AddWithValue("@sexo", professor.Sexo);
                 sql.Parameters.AddWithValue("@idade", professor.Idade);
-                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
+                sql.Parameters.AddWithValue("@id", professor.Id);
                 sql.Parameters.AddWithValue("@materia", professor.Materia);
                 sql.Parameters.AddWithValue("@classe", professor.Classe);
 
                 sql.ExecuteNonQuery();
-                con.FecharConexao();
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao salvar" + ex.Message);
+                throw;
+            }
+            finally
+            {
                 con.FecharConexao();
-                throw ex;
             }
         }
+
         public void EditarProf(Professor professor)
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE alunos SET nome = @nome, sexo = @sexo, idade = @idade, classe = @classe WHERE codigo = @codigo", con.conectar);
+                sql = new MySqlCommand("UPDATE aluno SET nome = @nome, sexo = @sexo, idade = @idade, classe = @classe WHERE id = @id", con.conectar);
                 sql.Parameters.AddWithValue("@nome", professor.Nome);
                 sql.Parameters.AddWithValue("@sexo", professor.Sexo);
                 sql.Parameters.AddWithValue("@idade", professor.Idade);
                 sql.Parameters.AddWithValue("@materia", professor.Materia);
                 sql.Parameters.AddWithValue("@classe", professor.Classe);
-                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
+                sql.Parameters.AddWithValue("@id", professor.Id);
 
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
             }
-            catch (Exception ex)
+            catch 
+            {  
+                throw ;
+            }
+            finally
             {
-                MessageBox.Show("Erro ao Editar" + ex);
                 con.FecharConexao();
-                throw ex;
             }
         }
-        //colocar so o date.
+
         public void ExcluirProf(Professor professor)
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM professor WHERE codigo = @codigo", con.conectar);
-
-                sql.Parameters.AddWithValue("@codigo", professor.Codigo);
-
+                sql = new MySqlCommand("DELETE FROM professor WHERE id = @id", con.conectar);
+                sql.Parameters.AddWithValue("@id", professor.Id);
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
-
-                //executar os comandos de sql
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao excluir" + ex.Message);
+                throw;
+            }
+            finally
+            {
                 con.FecharConexao();
-                throw ex;
             }
         }
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.CbSexoAluno = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -116,9 +116,9 @@
             // 
             // BtnVoltarAreaProfessor
             // 
-            this.BtnVoltarAreaProfessor.Location = new System.Drawing.Point(640, 454);
+            this.BtnVoltarAreaProfessor.Location = new System.Drawing.Point(28, 12);
             this.BtnVoltarAreaProfessor.Name = "BtnVoltarAreaProfessor";
-            this.BtnVoltarAreaProfessor.Size = new System.Drawing.Size(81, 41);
+            this.BtnVoltarAreaProfessor.Size = new System.Drawing.Size(81, 24);
             this.BtnVoltarAreaProfessor.TabIndex = 8;
             this.BtnVoltarAreaProfessor.Text = "VOLTAR";
             this.BtnVoltarAreaProfessor.UseVisualStyleBackColor = true;
@@ -126,9 +126,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(589, 454);
+            this.button2.Location = new System.Drawing.Point(439, 443);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 41);
+            this.button2.Size = new System.Drawing.Size(84, 29);
             this.button2.TabIndex = 9;
             this.button2.Text = "CRIAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(420, 104);
+            this.label6.Location = new System.Drawing.Point(370, 104);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 24);
             this.label6.TabIndex = 12;
@@ -156,7 +156,7 @@
             "2A",
             "2B",
             "2C"});
-            this.CbturmaAluno.Location = new System.Drawing.Point(546, 104);
+            this.CbturmaAluno.Location = new System.Drawing.Point(496, 104);
             this.CbturmaAluno.Name = "CbturmaAluno";
             this.CbturmaAluno.Size = new System.Drawing.Size(175, 21);
             this.CbturmaAluno.TabIndex = 13;
@@ -173,7 +173,7 @@
             // RaAluno
             // 
             this.RaAluno.Enabled = false;
-            this.RaAluno.Location = new System.Drawing.Point(546, 150);
+            this.RaAluno.Location = new System.Drawing.Point(496, 150);
             this.RaAluno.Name = "RaAluno";
             this.RaAluno.ReadOnly = true;
             this.RaAluno.Size = new System.Drawing.Size(175, 20);
@@ -181,9 +181,9 @@
             // 
             // BtnNovo
             // 
-            this.BtnNovo.Location = new System.Drawing.Point(401, 454);
+            this.BtnNovo.Location = new System.Drawing.Point(350, 443);
             this.BtnNovo.Name = "BtnNovo";
-            this.BtnNovo.Size = new System.Drawing.Size(132, 41);
+            this.BtnNovo.Size = new System.Drawing.Size(83, 29);
             this.BtnNovo.TabIndex = 19;
             this.BtnNovo.Text = "NOVO";
             this.BtnNovo.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(220, 454);
+            this.button1.Location = new System.Drawing.Point(261, 443);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 41);
+            this.button1.Size = new System.Drawing.Size(83, 29);
             this.button1.TabIndex = 20;
             this.button1.Text = "EDITAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -211,9 +211,9 @@
             // 
             // BtnExcluirAluno
             // 
-            this.BtnExcluirAluno.Location = new System.Drawing.Point(50, 454);
+            this.BtnExcluirAluno.Location = new System.Drawing.Point(173, 443);
             this.BtnExcluirAluno.Name = "BtnExcluirAluno";
-            this.BtnExcluirAluno.Size = new System.Drawing.Size(126, 41);
+            this.BtnExcluirAluno.Size = new System.Drawing.Size(82, 29);
             this.BtnExcluirAluno.TabIndex = 22;
             this.BtnExcluirAluno.Text = "EXCLUIR";
             this.BtnExcluirAluno.UseVisualStyleBackColor = true;
@@ -223,7 +223,7 @@
             // 
             this.RA.AutoSize = true;
             this.RA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RA.Location = new System.Drawing.Point(423, 150);
+            this.RA.Location = new System.Drawing.Point(373, 150);
             this.RA.Name = "RA";
             this.RA.Size = new System.Drawing.Size(36, 24);
             this.RA.TabIndex = 23;
@@ -239,15 +239,15 @@
             this.Grid.Location = new System.Drawing.Point(50, 257);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.Grid.Size = new System.Drawing.Size(671, 166);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid.Size = new System.Drawing.Size(621, 170);
             this.Grid.TabIndex = 7;
             this.Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick_1);
             // 
@@ -255,17 +255,18 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(343, 25);
+            this.label5.Location = new System.Drawing.Point(344, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 33);
             this.label5.TabIndex = 35;
             this.label5.Text = "ALUNO";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // NotaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 516);
+            this.ClientSize = new System.Drawing.Size(743, 520);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.RA);

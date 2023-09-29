@@ -6,50 +6,48 @@ using Sistema_Escola_Forms.Entidades;
 
 namespace Sistema_Escola_Forms.Repository
 {
-    public class AlunoRepository 
+    public class AlunoRepository
     {
         MySqlCommand sql;
         Connection con = new Connection();
 
-        //objeto de negocio.
-        //Lista + interface.
         public DataTable Listar()
-        {  
+        {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT*FROM alunos", con.conectar);
+                sql = new MySqlCommand("SELECT*FROM aluno", con.conectar);
                 MySqlDataAdapter da = new MySqlDataAdapter(sql);
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 return dt;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("erro : " + ex.Message);
-                throw ex;
+                throw;
             }
         }
-            public void Salvar(Aluno aluno)
+        public void Salvar(Aluno aluno)
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO alunos(nome,sexo, idade, sala, ra) VALUES(@nome ,@sexo, @idade ,@sala, @ra ) ", con.conectar);
+                sql = new MySqlCommand("INSERT INTO aluno(nome,sexo, idade, ra, classe) VALUES(@nome ,@sexo, @idade , @ra,@classe ) ", con.conectar);
                 sql.Parameters.AddWithValue("@nome", aluno.Nome);
                 sql.Parameters.AddWithValue("@sexo", aluno.Sexo);
-                sql.Parameters.AddWithValue("@idade", aluno.Nascimento);
-                sql.Parameters.AddWithValue("@sala", aluno.Sala);
+                sql.Parameters.AddWithValue("@idade", aluno.Idade);
+                sql.Parameters.AddWithValue("@classe", aluno.Classe);
                 sql.Parameters.AddWithValue("@ra", aluno.RA);
                 sql.ExecuteNonQuery();
-                con.FecharConexao();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Erro ao salvar" + ex.Message);
+                throw;
+            }
+            finally
+            {
                 con.FecharConexao();
-                throw ex;
             }
         }
         public void Editar(Aluno aluno)
@@ -57,21 +55,22 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE alunos SET nome = @nome, sexo = @sexo, idade = @idade, sala = @sala WHERE ra = @ra", con.conectar);
+                sql = new MySqlCommand("UPDATE aluno SET nome = @nome, sexo = @sexo, idade = @idade, classe = @classe WHERE ra = @ra", con.conectar);
                 sql.Parameters.AddWithValue("@nome", aluno.Nome);
                 sql.Parameters.AddWithValue("@sexo", aluno.Sexo);
-                sql.Parameters.AddWithValue("@idade", aluno.Nascimento);
-                sql.Parameters.AddWithValue("@sala", aluno.Sala);
+                sql.Parameters.AddWithValue("@idade", aluno.Idade);
+                sql.Parameters.AddWithValue("@classe", aluno.Classe);
                 sql.Parameters.AddWithValue("@ra", aluno.RA);
 
                 sql.ExecuteNonQuery();
-                con.FecharConexao();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Erro ao Editar" + ex);
+                throw;
+            }
+            finally
+            {
                 con.FecharConexao();
-                throw ex;
             }
         }
         public void Excluir(Aluno aluno)
@@ -79,30 +78,18 @@ namespace Sistema_Escola_Forms.Repository
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM alunos WHERE ra = @ra", con.conectar);
-               
+                sql = new MySqlCommand("DELETE FROM aluno WHERE ra = @ra", con.conectar);
                 sql.Parameters.AddWithValue("@ra", aluno.RA);
-
                 sql.ExecuteNonQuery();
-                con.FecharConexao();
-
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Erro ao excluir" + ex.Message);
+                throw;
+            }
+            finally
+            {
                 con.FecharConexao();
-                throw ex;
             }
         }
-
-
-       
-
-
-
-
-
-
-
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
+﻿using System.Data;
 using Sistema_Escola_Forms.Entidades;
 using Sistema_Escola_Forms.Repository;
 
@@ -24,7 +16,7 @@ namespace Sistema_Escola_Forms.Model
                 dt = dao.Listar();
                 return dt;
             }
-            catch (Exception)
+            catch 
             {
                 throw;
             }
@@ -35,9 +27,8 @@ namespace Sistema_Escola_Forms.Model
             {
                 dao.Salvar(aluno);
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao salvar");
                 throw;
             }
         }
@@ -47,9 +38,8 @@ namespace Sistema_Escola_Forms.Model
             {
                 dao.Editar(aluno);
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao editar!");
                 throw;
             }
         }
@@ -59,9 +49,8 @@ namespace Sistema_Escola_Forms.Model
             {
                 dao.Excluir(aluno);
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Erro ao editar!");
                 throw;
             }
         }

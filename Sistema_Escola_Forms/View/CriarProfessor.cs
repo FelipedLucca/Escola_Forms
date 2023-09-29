@@ -96,7 +96,7 @@ namespace Sistema_Escola_Forms.View
         {
             try
             {
-                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
+                professor.Id = Convert.ToInt16(CodigoProfessor.Text);
                 professor.Nome = TextNomeProfessor.Text;
                 professor.Sexo = CbSexoProfessor.Text;
                 professor.Idade = Convert.ToDateTime(idadeProfessor.Text);
@@ -122,7 +122,7 @@ namespace Sistema_Escola_Forms.View
                 professor.Idade = Convert.ToDateTime(idadeProfessor.Text);
                 professor.Classe = CbClasseProfessor.Text;
                 professor.Materia = TxtMateria.Text;
-                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
+                professor.Id = Convert.ToInt16(CodigoProfessor.Text);
             
 
                 model.Salvar(professor);
@@ -139,7 +139,7 @@ namespace Sistema_Escola_Forms.View
         {
             try
             {
-                professor.Codigo = Convert.ToInt16(CodigoProfessor.Text);
+                professor.Id = Convert.ToInt16(CodigoProfessor.Text);
 
                 model.Excluir(professor);
                 MessageBox.Show("Professor excluido com sucesso!");

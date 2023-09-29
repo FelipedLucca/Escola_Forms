@@ -41,8 +41,8 @@ namespace Sistema_Escola_Forms.view
             {
                 aluno.Nome = TextNomeAluno.Text;
                 aluno.Sexo = CbSexoAluno.Text;
-                aluno.Nascimento = Convert.ToDateTime(idadeProfessor.Text);
-                aluno.Sala = CbturmaAluno.Text;
+                aluno.Idade = Convert.ToDateTime(idadeProfessor.Text);
+                aluno.Classe = CbturmaAluno.Text;
                 aluno.RA = Convert.ToInt16(RaAluno.Text);
 
                 model.Salvar(aluno);
@@ -61,8 +61,8 @@ namespace Sistema_Escola_Forms.view
                 aluno.RA = Convert.ToInt16(RaAluno.Text);
                 aluno.Nome = TextNomeAluno.Text;
                 aluno.Sexo = CbSexoAluno.Text;
-                aluno.Nascimento = Convert.ToDateTime(idadeProfessor.Text);
-                aluno.Sala = CbturmaAluno.Text;
+                aluno.Idade = Convert.ToDateTime(idadeProfessor.Text);
+                aluno.Classe = CbturmaAluno.Text;
 
                 model.Editar(aluno);
                 MessageBox.Show("Aluno editado com sucesso!");
@@ -124,18 +124,7 @@ namespace Sistema_Escola_Forms.view
                 Listar();
             };
         }
-        //private void BtnNovo_Click(object sender, EventArgs e)
-        //{
-        //    HabilitarCampo();
-        //    LimparCampo();
-
-        //    Random random = new Random();
-        //    int ra = random.Next(1000, 9000);
-
-        //    //aqui eu preciso fazer uma verificação se um RA já existe
-
-        //    RaAluno.Text = Convert.ToString(ra);
-        //}
+        
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Você deseja editar o aluno?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -201,11 +190,12 @@ namespace Sistema_Escola_Forms.view
 
         private void Grid_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            TextNomeAluno.Text = Grid.CurrentRow.Cells[0].Value.ToString();
+            RaAluno.Text = Grid.CurrentRow.Cells[0].Value.ToString();
             idadeProfessor.Text = Grid.CurrentRow.Cells[1].Value.ToString();
             CbSexoAluno.Text = Grid.CurrentRow.Cells[2].Value.ToString();
-            CbturmaAluno.Text = Grid.CurrentRow.Cells[3].Value.ToString();
-            RaAluno.Text = Grid.CurrentRow.Cells[4].Value.ToString();
+            TextNomeAluno.Text = Grid.CurrentRow.Cells[3].Value.ToString();
+            CbturmaAluno.Text = Grid.CurrentRow.Cells[4].Value.ToString();
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -231,6 +221,11 @@ namespace Sistema_Escola_Forms.view
             Random random = new Random();
             int ra = random.Next(1000, 9000);
             RaAluno.Text = Convert.ToString(ra);  
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
